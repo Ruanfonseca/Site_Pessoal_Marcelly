@@ -9,6 +9,16 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="image/perfil.jpg">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="JS/script.js"></script>
+    <script src="JS/Valida.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
 </head>
 
 <body>
@@ -54,7 +64,11 @@
                 </div>
                 <div class="column right">
                     <div class="text">Sou Marcelly e sou <span class="typing-2"></span></div>
-                    <p>Olá! Me chamo Marcelly, tenho 26 anos e resido na zona oeste do Rio de Janeiro. Desde pequena tenho apreço por desenhos e criações de artes. Me encontrei no design gráfico e comecei a atuar na área há cerca de 2 anos como freelancer e posteriormente como estagiária em uma agência de Marketing Digital. Atualmente trabalho como Assistente de Marketing na empresa Dime Distribuidora, onde desenvolvo artes para mídias sociais e layouts internos. 
+                    <p>Olá! Me chamo Marcelly, tenho 26 anos e resido na zona oeste do Rio de Janeiro. Desde pequena
+                        tenho apreço por desenhos e criações de artes. Me encontrei no design gráfico e comecei a atuar
+                        na área há cerca de 2 anos como freelancer e posteriormente como estagiária em uma agência de
+                        Marketing Digital. Atualmente trabalho como Assistente de Marketing na empresa Dime
+                        Distribuidora, onde desenvolvo artes para mídias sociais e layouts internos.
                         Tenho buscado me atualizar e aprimorar meus conhecimentos a cada dia.</p>
                     <a href="file://C:/Users/Ruan/Downloads/Curriculo_prog_2023.pdf" target="_blank"
                         download="Curriculo_prog_2023.pdf">Download CV</a>
@@ -225,7 +239,7 @@
                         -->
                         <div class="row">
                             <a href="https://www.instagram.com/marcellydesigner/" target="_blank" class=""><img
-                                    src="image/Instagram.png" alt="" ></a>
+                                    src="image/Instagram.png" alt=""></a>
                             <div class="info">
                                 <div class="head">Instagram</div>
                                 <div class="sub-title">@marcellydesigner</div>
@@ -244,7 +258,8 @@
                             <img src="image/whatsapp.png" alt=""></a>
                             <div class="info">
                                 <div class="head">WhatsApp</div>
-                                <div class="sub-title"><a href="https://wa.me/5521984389640" target="_blank">+55 (21)98438-9640</a></div>
+                                <div class="sub-title"><a href="https://wa.me/5521984389640" target="_blank">+55
+                                        (21)98438-9640</a></div>
                             </div>
                         </div>
 
@@ -255,54 +270,110 @@
 
                 <div class="column rigth">
                     <div class="text">Mensagem</div>
-
-                    <form class="formulario" method="Post" enctype="multipart/form-data">
+                    <form class="formulario" method="post" enctype="multipart/form-data">
                         <div class="fields">
+
                             <div class="field name">
-                                <input type="text" placeholder="Nome" name="nome" required>
+                                <label for="nome">Nome:</label>
+                                <input type="text" id="nome" name="nome" required>
                             </div>
+
                             <div class="field email">
-                                <input type="email" placeholder="Email" name="email" required>
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
                             </div>
 
                         </div>
-                        <div class="field">
+                        </br>
+                        <div class="fields">
                             <div class="field">
-                                <input type="text" placeholder="Sobrenome" required>
-                            </div>
-                            <div class="field textarea">
-                                <textarea cols="30" rows="10" placeholder="Escrever...." required></textarea>
-                            </div>
-                            <div class="button">
-                                <input type="hidden" name="acao" value="enviar"> 
-                                <button onclick="enviarFormulario()" type="submit">Enviar</button>
+                                <label for="sobrenome">Sobrenome:</label>
+                                <input type="text" id="sobrenome" name="sobrenome" required>
                             </div>
                         </div>
-                 
-                        
-                 
+                        </br>
+                        <div class="field textarea">
+                            <label for="mensagem">Mensagem:</label>
+                            <textarea id="mensagem" name="mensagem" required></textarea>
+                        </div>
+                        </br>
+                        <div class="button">
+                            <button type="submit">Enviar</button>
+                        </div>
                     </form>
+                    <div id="mensagem-retorno"></div>
+                    
 
+                    
                 </div>
 
+                
             </div>
         </div>
     </section>
+    <script>
+        // Função para validar um endereço de email
+        function validateEmail(email) {
+            var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+            if (reg.test(email)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
-    <!--sessão  footer-->
+        $(document).ready(function () {
+            // Seleciona o formulário com a classe 'formulario'
+            $('form.formulario').submit(function (e) {
+                // Evita o comportamento padrão do formulário de recarregar a página
+                e.preventDefault();
+
+                // Obtém o valor do campo de email
+                var email = $('#email').val();
+
+                // Valida o email
+                if (!validateEmail(email)) {
+                    alert('Email incorreto');
+                    return;
+                }
+
+                // Cria um objeto FormData com os dados do formulário
+                var formData = new FormData(this);
+
+                // Envia a requisição Ajax para o servidor
+                $.ajax({
+                    url: "Back/Form.php",
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        // Exibe uma mensagem de sucesso ao usuário
+                        setTimeout(function () {
+                            $('#mensagem-retorno').removeClass('error').addClass('success').text('Obrigado pela confiança!, responderei o mais rapido possível');
+                        },100); // 10000 milissegundos = 10 segundos
+
+
+                        // Limpa o formulário
+                        $('form.formulario')[0].reset();
+                    },
+                    error: function (xhr, status, error) {
+                        // Exibe uma mensagem de erro caso a requisição falhe
+                        $('#mensagem-retorno').removeClass('success').addClass('error').text('Ocorreu um erro: ' + error);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
     <footer>
         <span>Desenvolvido por <a href="https://github.com/Ruanfonseca" target="_blank">Ruan fonseca</a> todos os
             direitos reservados 2023</span>
     </footer>
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="JS/script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
 
 </body>
 
