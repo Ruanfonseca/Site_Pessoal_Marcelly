@@ -13,7 +13,7 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="JS/script.js"></script>
-    <script src="JS/Valida.js"></script>
+    <script src="JS/FormJS.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
@@ -82,30 +82,36 @@
         <div class="max-width">
             <h2 class="title">Serviços</h2>
             <div class="serv-content">
+                
                 <div class="card">
                     <div class="box">
                         <ion-icon name="brush-outline"></ion-icon>
-                        <div class="text">Web Design</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, optio. Rerum est atque
-                            obcaecati aperiam!</p>
+                        <div class="text">Identidade Visual</div>
+                        <p> Ela é responsável por transmitir a personalidade e os valores da marca de forma clara e consistente, 
+                             criando uma conexão emocional com o público-alvo. Através de elementos gráficos como logotipos, cores, tipografia e padrões, a identidade visual ajuda a estabelecer uma presença forte e reconhecível no mercado. Por isso, investir na criação e manutenção da identidade
+                             visual é essencial para construir uma marca sólida e duradoura.</p>
                     </div>
                 </div>
-
+                
                 <div class="card">
                     <div class="box">
                         <ion-icon name="trending-up-outline"></ion-icon>
                         <div class="text">Anúncios</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, optio. Rerum est atque
-                            obcaecati aperiam!</p>
+                        <p>Os anúncios são uma ferramenta essencial para a promoção de produtos ou serviços, e contar com artes criativas e 
+                            impactantes pode fazer toda a diferença. É aí que entra o Canva,Uma das minhas especialidades, uma plataforma de design gráfico que oferece diversas 
+                            opções de templates e ferramentas para criar peças publicitárias de maneira fácil e intuitiva.
+                             
+                          </p>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="box">
                         <ion-icon name="code-outline"></ion-icon>
-                        <div class="text">Design de Apps</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, optio. Rerum est atque
-                            obcaecati aperiam!</p>
+                        <div class="text">Flyers</div>
+                        <p>Os flyers são uma das formas mais antigas de propaganda, mas ainda hoje são bastante utilizados para divulgar eventos,
+                             promoções e outras informações importantes. Eles são impressos em papel e distribuídos em locais estratégicos, 
+                             como pontos de ônibus, praças e ruas movimentadas. </p>
                     </div>
                 </div>
             </div>
@@ -115,16 +121,13 @@
     <!--sessão especialidade-->
     <section class="skills" id="skills">
         <div class="max-width">
-            <h2 class="title">Minhas</h2>
+            <h2 class="title">Minhas Software skills</h2>
             <div class="skills-content">
                 <div class="column left">
-                    <div class="text">Minhas habilidades criativas e experiencias</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod assumenda consequatur facere eius
-                        distinctio deleniti reiciendis aliquam architecto suscipit, at, dolores dicta sed adipisci
-                        laborum, totam dolorum enim maxime aliquid eos. Ullam, et maiores porro voluptatum explicabo
-                        deleniti sint rem quam! Delectus iste ut hic, molestias adipisci totam ipsum reiciendis quam
-                        voluptatem nisi cumque saepe ea cupiditate. Vel, quae est!</p>
-                    <a href="#">Mais informações</a>
+                    <div class="text">Stack</div>
+                    <p>Utilizando essas tecnologias eu crio para você uma eficaz de alcançar mais 
+                        clientes para seu empreendimento.
+                    </p>
                 </div>
                 <div class="column right">
                     <div class="bars">
@@ -179,10 +182,10 @@
                         <a href="https://www.behance.net/gallery/166057417/Retiro-Immec-2023" target="_blank"><img
                                 src="image/retiroImmec.jpg" alt=""></a>
                         <div class="text">Retiro Immec Church 2023</div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione voluptatibus beatae iste
-                            aliquid laborum nobis.</p>
+                        <p>Projeto feito para a igreja immec Church no retiro do ano de 2023</p>
                     </div>
                 </div>
+                <!--
                 <div class="card">
                     <div class="box">
                         <img src="image/img-2.jpg" alt="">
@@ -215,6 +218,7 @@
                             aliquid laborum nobis.</p>
                     </div>
                 </div>
+                -->
             </div>
         </div>
     </section>
@@ -311,60 +315,7 @@
             </div>
         </div>
     </section>
-    <script>
-        // Função para validar um endereço de email
-        function validateEmail(email) {
-            var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
-            if (reg.test(email)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        $(document).ready(function () {
-            // Seleciona o formulário com a classe 'formulario'
-            $('form.formulario').submit(function (e) {
-                // Evita o comportamento padrão do formulário de recarregar a página
-                e.preventDefault();
-
-                // Obtém o valor do campo de email
-                var email = $('#email').val();
-
-                // Valida o email
-                if (!validateEmail(email)) {
-                    alert('Email incorreto');
-                    return;
-                }
-
-                // Cria um objeto FormData com os dados do formulário
-                var formData = new FormData(this);
-
-                // Envia a requisição Ajax para o servidor
-                $.ajax({
-                    url: "Back/Form.php",
-                    type: "POST",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (data) {
-                        // Exibe uma mensagem de sucesso ao usuário
-                        setTimeout(function () {
-                            $('#mensagem-retorno').removeClass('error').addClass('success').text('Obrigado pela confiança!, responderei o mais rapido possível');
-                        },100); // 10000 milissegundos = 10 segundos
-
-
-                        // Limpa o formulário
-                        $('form.formulario')[0].reset();
-                    },
-                    error: function (xhr, status, error) {
-                        // Exibe uma mensagem de erro caso a requisição falhe
-                        $('#mensagem-retorno').removeClass('success').addClass('error').text('Ocorreu um erro: ' + error);
-                    }
-                });
-            });
-        });
-    </script>
+    
 
 
 

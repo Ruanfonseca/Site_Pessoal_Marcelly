@@ -1,6 +1,6 @@
 <?php
 // Carrega a biblioteca do Twilio
-require_once 'vendor/twilio/autoload.php';
+require_once 'vendor\autoload.php';
 use Twilio\Rest\Client;
 
 // Dados da conta Twilio
@@ -21,7 +21,7 @@ $message = $client->messages->create(
 
 // Exibe a mensagem de sucesso ou erro
 if ($message->sid) {
-  echo "Mensagem enviada com sucesso!";
+  echo   "Mensagem enviada com sucesso!";
 } else {
   echo "Erro ao enviar mensagem: " . $message->errorMessage;
 }

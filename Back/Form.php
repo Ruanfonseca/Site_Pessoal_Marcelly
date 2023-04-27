@@ -6,12 +6,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $mensagem = filter_input(INPUT_POST, 'mensagem', FILTER_SANITIZE_STRING);
   
     // Cria uma string com os dados do formulário
-    $marcacao = "-----------------------------------------------------------------------
-  Nome: $nome\n Sobrenome: $sobrenome \n Email: $email \n Mensagem: $mensagem\n
-  ---------------------------------------------------------------------------------";
+    $marcacao = "-----------------------------------------------------------------------------
+                 Nome: $nome\n Sobrenome: $sobrenome \n Email: $email \n Mensagem: $mensagem\n
+                 -------------------------------------------------------------------------\n\n";
   
     // Escreve no arquivo
-    if (file_put_contents('dados.txt', $marcacao)) {
+    if (file_put_contents('dados.txt', $marcacao, FILE_APPEND)) {
       // Encaminha um JSON com a resposta para o AJAX caso não tenha recebido os dados
       $response = array(
         'success'=>true,
